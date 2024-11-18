@@ -15,20 +15,16 @@ namespace pr6
         public Form1()
         {
             InitializeComponent();
+
+            txtCurrent.Text = "0";
+            txtLast.Text = "0";
+            txtPurchase.Text = "0";
+            comboBox1.SelectedIndex = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            txtCurrent.Text = "0";
-            txtLast.Text = "0";
-            txtPrice.Text = "0";
-            txtPurchase.Text = "0";
-        }
 
-        private double getPurchase(int pCurrent, int pLast, double price)
-        {
-            double purchase = (pCurrent - pLast) * price;
-            return purchase;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -56,62 +52,42 @@ namespace pr6
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-            {
-                if (txtCurrent.Text != "" && txtLast.Text != "" && txtPrice.Text != "") // если поля заполнены
-                {
-                    int pCurrent = Convert.ToInt32(txtCurrent.Text);
-                    int pLast = Convert.ToInt32(txtLast.Text);
-                    double pPrice = Convert.ToInt32(txtPrice.Text);
-                    if (pCurrent >= pLast) // проверка, что текущее значение >= предыдущего
-                    {
-                        double purchase = getPurchase(pCurrent, pLast, pPrice);
-                        txtPurchase.Text = purchase.ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Текущее значение должно быть больше предыдущего", "Внимание:");
-                    }
-                }
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtLastName.Text != "" && txtFirstName.Text != "" && txtAdress.Text != "" && int.Parse(txtPurchase.Text) != 0)
+            if (txtLastName.Text != "" && txtFirstName.Text != "" && txtLastName.Text != "" && int.Parse(txtPurchase.Text) != 0)
             {
-                MessageBox.Show($"Платеж {txtPurchase.Text} принят! \n Плательщик {txtLastName.Text} {txtFirstName.Text} ");
+                MessageBox.Show($"Оплата прошла успешна ! \n Товар {txtLastName.Text} {txtFirstName.Text} {txtAdress.Text}. К оплате {txtPurchase.Text} руб. ");
             }
             else
             {
                 if (txtLastName.Text == "")
                 {
-                    MessageBox.Show("Заполните фамилию!", "Внимание:");
+                    MessageBox.Show("Заполните производителя!");
                 }
                 if (txtFirstName.Text == "")
-                {
-                    MessageBox.Show("Заполните имя!", "Внимание:");
+                { 
+                MessageBox.Show("Заполните марку ");
                 }
-                if (txtAdress.Text == "")
+                if (txtLastName.Text == "")
                 {
-                    MessageBox.Show("Заполните адрес!", "Внимание:");
-                }
-                if (int.Parse(txtPurchase.Text) == 0)
-                {
-                    MessageBox.Show("Вычислите оплату!", "Внимание:");
+                    MessageBox.Show("Заполните модель!");
                 }
             }
+            if (int.Parse(txtPurchase.Text) == 0)
+
+                MessageBox.Show("Вычеслите оплату !");
+
         }
 
         private void txtCurrent_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
             {
                 e.KeyChar = '\0';
             }
         }
 
-        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtLast_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
             {
@@ -121,7 +97,6 @@ namespace pr6
 
         private void txtCurrent_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -141,7 +116,6 @@ namespace pr6
 
             txtCurrent.Text = "0";
             txtLast.Text = "0";
-            txtPrice.Text = "0";
             txtPurchase.Text = "0";
 
         }
@@ -149,6 +123,58 @@ namespace pr6
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtLast_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCurrent.Text) && !string.IsNullOrWhiteSpace(txtLast.Text) && comboBox1.SelectedItem != null)
+            {
+
+                // Преобразование значений из текстовых полей
+                int pCurrent = Convert.ToInt32(txtCurrent.Text);
+                int pLast = Convert.ToInt32(txtLast.Text);
+                string bonus_card = comboBox1.SelectedItem.ToString();
+
+                if (pCurrent > 0 && pLast > 0)
+                {
+                    // Расчет скидки
+                    double discountPercent = 0;
+                    if (bonus_card == "нет")
+                    {
+                        discountPercent = 0;
+                    }
+                    else if (bonus_card == "обычная")
+                    {
+                        discountPercent = 1;
+                    }
+                    else if (bonus_card == "золотая")
+                    {
+                        discountPercent = 5;
+                    }
+                    else if (bonus_card == "платиновая")
+                    {
+                        discountPercent = 10;
+                    }
+
+
+                    double totalCost = pCurrent * pLast;
+                    double discount = (totalCost * discountPercent) / 100; 
+                    double finalCost = totalCost - discount;
+
+
+                    txtPurchase.Text = finalCost.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Текущая и последняя стоимость должны быть больше нуля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
         }
     }
 }

@@ -40,17 +40,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.datePurchase = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPurchase = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtLast = new System.Windows.Forms.TextBox();
             this.txtCurrent = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.datePurchase = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -78,18 +78,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(25, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Имя";
+            this.label3.Text = "Марка";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(25, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Адрес";
+            this.label2.Text = "Модель";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
@@ -97,9 +97,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Фамилия";
+            this.label1.Text = "Производитель";
             // 
             // txtAdress
             // 
@@ -167,6 +167,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.MistyRose;
+            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.datePurchase);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
@@ -175,7 +176,6 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.txtPrice);
             this.groupBox3.Controls.Add(this.txtLast);
             this.groupBox3.Controls.Add(this.txtCurrent);
             this.groupBox3.Location = new System.Drawing.Point(423, 12);
@@ -184,6 +184,35 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Информация о клиента";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "нет",
+            "обычная",
+            "золотая",
+            "платиновая"});
+            this.comboBox1.Location = new System.Drawing.Point(25, 160);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(233, 21);
+            this.comboBox1.TabIndex = 11;
+            // 
+            // datePurchase
+            // 
+            this.datePurchase.Location = new System.Drawing.Point(25, 301);
+            this.datePurchase.Name = "datePurchase";
+            this.datePurchase.Size = new System.Drawing.Size(200, 20);
+            this.datePurchase.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(28, 285);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Дата платежа";
             // 
             // label7
             // 
@@ -205,7 +234,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(107, 186);
+            this.button4.Location = new System.Drawing.Point(108, 196);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 6;
@@ -218,35 +247,28 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(25, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(178, 13);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Предыдущее показание счетчика";
+            this.label4.Text = "Количество";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(25, 144);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Тариф";
+            this.label5.Text = "Бонусная карта";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(25, 28);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 13);
+            this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 3;
-            this.label6.Text = "Текущее показание счетчика";
+            this.label6.Text = "Стоимость за ед.";
             this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(25, 160);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(233, 20);
-            this.txtPrice.TabIndex = 2;
             // 
             // txtLast
             // 
@@ -254,6 +276,7 @@
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(233, 20);
             this.txtLast.TabIndex = 1;
+            this.txtLast.TextChanged += new System.EventHandler(this.txtLast_TextChanged);
             // 
             // txtCurrent
             // 
@@ -262,22 +285,6 @@
             this.txtCurrent.Size = new System.Drawing.Size(233, 20);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextChanged += new System.EventHandler(this.txtCurrent_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 285);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Дата платежа";
-            // 
-            // datePurchase
-            // 
-            this.datePurchase.Location = new System.Drawing.Point(25, 301);
-            this.datePurchase.Name = "datePurchase";
-            this.datePurchase.Size = new System.Drawing.Size(200, 20);
-            this.datePurchase.TabIndex = 10;
             // 
             // Form1
             // 
@@ -315,14 +322,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtLast;
         private System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtPurchase;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker datePurchase;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtPurchase;
     }
 }
 
